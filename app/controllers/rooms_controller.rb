@@ -22,9 +22,12 @@ class RoomsController < ApplicationController
   # POST /rooms or /rooms.json
   def create
     @room = Room.new(room_params)
-
-    @room.name = "room_channel_#{room_params.user_id}#{current_user}"
-
+    user_id = params[:user_id].to_i
+    @room.name = if user_id < current_user.id
+                   "room_channel_#{user_id}#{current_user.id}"
+                 else
+                   "room_channel_#{current_user.id}#{user_id}"
+                 end
     respond_to do |format|
       if @room.save
         format.html { redirect_to @room, notice: "Room was successfully created." }
