@@ -33,6 +33,7 @@ class MessagesController < ApplicationController
       end
     end
   end
+  helper_method :create_room
 
   # PATCH/PUT /messages/1 or /messages/1.json
   def update

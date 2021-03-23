@@ -1,8 +1,22 @@
-<div class="jumbotron">
-  <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured
-    content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <a class="btn btn-primary btn-lg" href="users/sign_up" role="button">Sign Up!</a>
+<div class="row mt-2">
+  <div class="col-2 mt-2">
+    <h3>Users</h3>
+    <% @users.each do |user| %>
+      <p class="p-2">
+        <%= render 'rooms/form', room: Room.new, user: user %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="col-10">
+    <div class="jumbotron">
+      <h1 class="display-4">Hello, world!</h1>
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+        featured
+        content or information.</p>
+      <hr class="my-4">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <a class="btn btn-primary btn-lg" href="users/sign_up" role="button">Sign Up!</a>
+    </div>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
   # GET /rooms or /rooms.json
   def index
     @rooms = Room.all
@@ -22,6 +22,8 @@ class RoomsController < ApplicationController
   # POST /rooms or /rooms.json
   def create
     @room = Room.new(room_params)
+
+    @room.name = "room_channel_#{room_params.user_id}#{current_user}"
 
     respond_to do |format|
       if @room.save
@@ -57,13 +59,14 @@ class RoomsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_room
-      @room = Room.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def room_params
-      params.require(:room).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_room
+    @room = Room.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def room_params
+    params.require(:room).permit(:name)
+  end
 end
