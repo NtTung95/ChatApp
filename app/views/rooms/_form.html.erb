@@ -11,13 +11,11 @@
     </div>
   <% end %>
 
-<!--  <div class="field">-->
-    <%#= form.label :name %>
-    <%#= form.text_field :name %>
-<!--  </div>-->
+  <%= form.hidden_field :name, value: user.id %>
+
   <%#= form.hidden_field :user_id %>
 
   <div class="actions">
-    <%= form.submit user.email, class: 'btn btn-outline-primary'%>
+    <%= form.submit user.email, class: 'btn btn-outline-primary' %>
   </div>
 <% end %>
