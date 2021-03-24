@@ -1,10 +1,10 @@
 <div class="row mt-2">
-  <div class="col-2 mt-2">
+  <div class="col-2 mt-2 border-right">
     <% if user_signed_in? %>
       <h3>Welcome <%= @user.email %></h3>
     <% end %>
     <% @users.each do |user| %>
-      <p class="p-2">
+      <p>
         <%= render 'rooms/form', room: Room.new, user: user %>
       </p>
     <% end %>
@@ -14,16 +14,18 @@
 <!--      <p><%#= @room.name %></p>-->
       <div class="chat-room">
         <% @room.messages.each do |message| %>
-          <div class="message col-12 mb-3 <%= "me" if message.user_id == current_user.id %>">
-            <div class="content_container">
+          <div class="message <%= "me" if message.user_id == current_user.id %>">
+            <div class="content_container m-1">
               <small class="text-muted"><%= message.user_id == current_user.id ? '' : message.user.email %></small>
               <div class="content">
                 <%= message.content %>
               </div>
             </div>
           </div>
+          <br>
         <% end %>
       </div>
+      <hr>
       <div class="chat-box">
         <%= render 'messages/form', message: Message.new, room: @room, user: current_user %>
       </div>
@@ -41,5 +43,4 @@
       </div>
     </div>
   <% end %>
-
 </div>

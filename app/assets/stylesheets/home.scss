@@ -1,6 +1,7 @@
 .chat-room {
-  height: 800px;
+  height: 700px;
   overflow-y: scroll;
+  overflow-x: hidden;
 
   .chat-box {
     position: absolute;
@@ -9,8 +10,7 @@
   }
 
   .message {
-    min-height: 59px;
-
+    min-height: 55px;
     .content_container {
       display: inline-block;
 
@@ -18,22 +18,20 @@
         background-color: #eeeeee;
         padding: 8px 16px;
         border-radius: 20px;
-      }
+        max-width: 800px;
+        overflow-wrap: break-word;
 
-      .author {
-        font-size: 0.8rem;
-        color: #777777;
-        margin-left: 10px;
       }
     }
 
     &.me {
       .content_container {
         float: right;
-
         .content {
           background-color: #007bff;
           color: white;
+          max-width: 800px;
+          overflow-wrap: break-word;
         }
       }
     }

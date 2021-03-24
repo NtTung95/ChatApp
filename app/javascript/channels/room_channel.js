@@ -12,7 +12,7 @@ consumer.subscriptions.create("RoomChannel", {
 
     received(data) {
         // Called when there's incoming data on the websocket for this channel
-        $(`<div class="message col-12 mb-3 me">
+        $(`<div class="message col-12 me">
             <div class="content_container">
               <div class="content">
                  ${data.content}
