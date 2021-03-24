@@ -1,4 +1,4 @@
-<%= form_with(model: message) do |form| %>
+<%= form_for(message, remote: true) do |form| %>
   <% if message.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
@@ -10,23 +10,14 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :room_id %>
-    <%= form.text_field :room_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row">
+    <div class="form-group col-10">
+      <%= form.text_field :content, class: 'input_message form-control' %>
+    </div>
+    <%= form.hidden_field :user_id, value: user.id %>
+    <%= form.hidden_field :room_id, value: room.id %>
+    <div class="col-2">
+      <%= form.submit "Send", class: 'btn btn-outline-success' %>
+    </div>
   </div>
 <% end %>

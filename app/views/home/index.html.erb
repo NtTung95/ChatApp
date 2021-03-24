@@ -9,18 +9,24 @@
       </p>
     <% end %>
   </div>
-
   <% if @room.present? %>
     <div class="col-10">
-      <p><%= @room.name %></p>
-<!--      <div class="chat-room">-->
-        <%# @room.messages.each do |message| %>
-          <%#= render 'messages/message', message:message %>
-        <%# end %>
-<!--      </div>-->
-<!--      <div class="chat-box">-->
-        <%#= render 'messages/form', message: Message.new, room: @room %>
-<!--      </div>-->
+<!--      <p><%#= @room.name %></p>-->
+      <div class="chat-room">
+        <% @room.messages.each do |message| %>
+          <div class="message col-12 mb-3 <%= "me" if message.user_id == current_user.id %>">
+            <div class="content_container">
+              <small class="text-muted"><%= message.user_id == current_user.id ? '' : message.user.email %></small>
+              <div class="content">
+                <%= message.content %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="chat-box">
+        <%= render 'messages/form', message: Message.new, room: @room, user: current_user %>
+      </div>
     </div>
   <% else %>
     <div class="col-10">

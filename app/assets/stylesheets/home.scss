@@ -1,3 +1,41 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.chat-room {
+  height: 800px;
+  overflow-y: scroll;
+
+  .chat-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .message {
+    min-height: 59px;
+
+    .content_container {
+      display: inline-block;
+
+      .content {
+        background-color: #eeeeee;
+        padding: 8px 16px;
+        border-radius: 20px;
+      }
+
+      .author {
+        font-size: 0.8rem;
+        color: #777777;
+        margin-left: 10px;
+      }
+    }
+
+    &.me {
+      .content_container {
+        float: right;
+
+        .content {
+          background-color: #007bff;
+          color: white;
+        }
+      }
+    }
+  }
+}

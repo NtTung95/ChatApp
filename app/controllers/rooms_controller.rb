@@ -5,10 +5,12 @@ class RoomsController < ApplicationController
   # GET /rooms or /rooms.json
   def index
     @rooms = Room.all
+    render 'home/index'
   end
 
   # GET /rooms/1 or /rooms/1.json
   def show
+    render 'home/index'
   end
 
   # GET /rooms/new
@@ -25,16 +27,16 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     user_id = @room.name
     current = current_user.id.to_s
-    name = if user_id < current
+    $name = if user_id < current
              "room_channel_#{user_id}#{current_user.id}"
            else
              "room_channel_#{current_user.id}#{user_id}"
            end
-    @room = Room.find_by_name(name)
+    @room = Room.find_by_name($name)
     if !@room.nil?
       render 'home/index'
     else
-      @room = Room.new(name: name)
+      @room = Room.new(name: $name)
       @room.save
       render 'home/index'
     end
