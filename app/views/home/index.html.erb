@@ -1,6 +1,8 @@
 <div class="row mt-2">
   <div class="col-2 mt-2">
-    <h3>Users</h3>
+    <% if user_signed_in? %>
+      <h3>Welcome <%= @user.email %></h3>
+    <% end %>
     <% @users.each do |user| %>
       <p class="p-2">
         <%= render 'rooms/form', room: Room.new, user: user %>
