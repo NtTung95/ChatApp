@@ -13,7 +13,7 @@
   <% if @room.present? %>
     <div class="col-10">
       <!--      <p><%#= @room.name %></p>-->
-      <div class="chat-room">
+      <div class="chat-room" id="chat-room">
         <% @room.messages.each do |message| %>
           <%= render 'messages/message', message: message %>
           <br>

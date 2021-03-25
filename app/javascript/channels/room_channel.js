@@ -31,5 +31,6 @@ consumer.subscriptions.create("RoomChannel", {
           </div>`).appendTo('div.chat-room')
         }
         document.getElementById('message_content').value = ""
+        $('#chat-room').scrollTop($('#chat-room')[0].scrollHeight);
     }
 });

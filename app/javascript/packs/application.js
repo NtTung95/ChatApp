@@ -12,3 +12,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+
+$(document).on('turbolinks:load', function () {
+    $('#chat-room').scrollTop($('#chat-room')[0].scrollHeight);
+})
