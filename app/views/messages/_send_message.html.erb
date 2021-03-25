@@ -1,0 +1,14 @@
+<div class="message me">
+  <div class="content_container m-1">
+<!--    <small class="text-muted"><%#= message.user.email %></small>-->
+    <div class="content">
+      <%= message.content %>
+      <% if message.docs.present? %>
+        <% message.docs.each do |doc| %>
+          <%= link_to "#{doc.identifier}", doc.url, class: 'content' %>
+          <br>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

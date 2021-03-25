@@ -21,12 +21,21 @@ class MessagesController < ApplicationController
 
   # POST /messages or /messages.json
   def create
-    @message = current_user.messages.new(message_params)
+    @message = Message.new(message_params)
     if @message.save
-      ActionCable.server.broadcast "#{$name}", { message: @message, username: @message.user.email, docs: @message.docs}
+      # html = render(
+      #   partial: 'messages/send_message',
+      #   locals: { message: @message }
+      # )
+      # html2 = render(
+      #   partial: 'messages/to_message',
+      #   locals: { message: @message }
+      # )
+      #
+      # ActionCable.server.broadcast "#{$name}", { message: @message, html: html, html2: html2 }
+      # ActionCable.server.broadcast "#{$name}", { message: @message, username: @message.user.email, docs: @message.docs }
+      SendMessageJob.perform_later(@message)
     end
-
-    # SendMessageJob.perform_later(@message)
   end
 
   # PATCH/PUT /messages/1 or /messages/1.json
@@ -60,6 +69,6 @@ class MessagesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def message_params
-    params.require(:message).permit(:content, :user_id, :room_id , {docs: []})
+    params.require(:message).permit(:content, :user_id, :room_id, { docs: [] })
   end
 end

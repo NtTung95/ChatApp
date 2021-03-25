@@ -26,6 +26,7 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     user_id = @room.name
+    $id_nhan = user_id
     current = current_user.id.to_s
     $name = if user_id < current
              "room_channel_#{user_id}#{current_user.id}"

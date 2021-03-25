@@ -14,5 +14,7 @@ ActiveStorage.start()
 
 
 $(document).on('turbolinks:load', function () {
-    $('#chat-room').scrollTop($('#chat-room')[0].scrollHeight);
+    if ($('#chat-room').length>0){
+        $('#chat-room').scrollTop($('#chat-room')[0].scrollHeight);
+    }
 })
