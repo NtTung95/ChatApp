@@ -14,6 +14,7 @@
     <div class="form-group col-10">
       <%= form.text_field :content, class: 'input_message form-control' %>
     </div>
+    <%= form.file_field :docs, multiple: true %>
     <%= form.hidden_field :user_id, value: user.id %>
     <%= form.hidden_field :room_id, value: room.id %>
     <div class="col-2">

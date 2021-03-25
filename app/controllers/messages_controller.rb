@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(message_params)
     if @message.save
-      ActionCable.server.broadcast "#{$name}", { message: @message, username: @message.user.email }
+      ActionCable.server.broadcast "#{$name}", { message: @message, username: @message.user.email, docs: @message.docs}
     end
 
     # SendMessageJob.perform_later(@message)
@@ -60,6 +60,6 @@ class MessagesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def message_params
-    params.require(:message).permit(:content, :user_id, :room_id)
+    params.require(:message).permit(:content, :user_id, :room_id , {docs: []})
   end
 end
