@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(message_params)
     if @message.save
-      ActionCable.server.broadcast "#{$name}", @message
+      ActionCable.server.broadcast "#{$name}", { message: @message, username: @message.user.email }
     end
 
     # SendMessageJob.perform_later(@message)

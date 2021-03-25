@@ -1,7 +1,8 @@
 <div class="row mt-2">
   <div class="col-2 mt-2 border-right">
     <% if user_signed_in? %>
-      <h3>Welcome <%= @user.email %></h3>
+      <h3>Welcome <%= current_user.email %></h3>
+      <input type="hidden" id="user-id" value="<%= current_user.id %>"/>
     <% end %>
     <% @users.each do |user| %>
       <p>
@@ -11,17 +12,10 @@
   </div>
   <% if @room.present? %>
     <div class="col-10">
-<!--      <p><%#= @room.name %></p>-->
+      <!--      <p><%#= @room.name %></p>-->
       <div class="chat-room">
         <% @room.messages.each do |message| %>
-          <div class="message <%= "me" if message.user_id == current_user.id %>">
-            <div class="content_container m-1">
-              <small class="text-muted"><%= message.user_id == current_user.id ? '' : message.user.email %></small>
-              <div class="content">
-                <%= message.content %>
-              </div>
-            </div>
-          </div>
+          <%= render 'messages/message', message: message %>
           <br>
         <% end %>
       </div>

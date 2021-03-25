@@ -9,6 +9,6 @@ class SendMessageJob < ApplicationJob
               </div>
             </div>
           </div>"
-    ActionCable.server.broadcast("#{$name}", html: html)
+    ActionCable.server.broadcast("#{$name}", {html: html})
   end
 end
