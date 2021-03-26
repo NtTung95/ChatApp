@@ -16,7 +16,6 @@ consumer.subscriptions.create("RoomChannel", {
             $(data.html2).appendTo('div.chat-room')
         } else if (user_id === current_id) {
             $(data.html).appendTo('div.chat-room')
-
             document.getElementById('message_content').value = ""
             document.getElementById('message_docs').value = ""
             document.getElementById('preview').innerHTML = ""

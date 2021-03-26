@@ -2,7 +2,7 @@
   <div class="content_container m-1">
     <small class="text-muted"><%= message.user_id == current_user.id ? '' : message.user.email %></small>
     <div class="content">
-      <%= message.content %>
+      <p class="m-0"><%= message.content %></p>
       <% if message.docs.present? %>
         <% message.docs.each do |doc| %>
           <% if doc.content_type == "image/jpeg" %>
@@ -16,5 +16,6 @@
         <% end %>
       <% end %>
     </div>
+    <small class="text-muted"><%= time_ago_in_words(message.created_at) %> ago</small>
   </div>
 </div>

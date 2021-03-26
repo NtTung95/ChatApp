@@ -2,7 +2,7 @@
   <div class="content_container m-1">
     <small class="text-muted"><%= message.user.email %></small>
     <div class="content">
-      <%= message.content %>
+      <p class="m-0"><%= message.content %></p>
       <% if message.docs.present? %>
         <% message.docs.each do |doc| %>
           <% if doc.content_type == "image/jpeg" %>
