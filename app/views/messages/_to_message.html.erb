@@ -5,9 +5,13 @@
       <%= message.content %>
       <% if message.docs.present? %>
         <% message.docs.each do |doc| %>
-          <%= image_tag "#{doc.url}", class: 'image_display' if doc.content_type == "image/jpeg"%>
-          <br>
-          <%= link_to "#{doc.identifier}", doc.url, class: 'content' %>
+          <% if doc.content_type == "image/jpeg" %>
+            <%= image_tag "#{doc.url}", class: 'image_display' %>
+            <br>
+            <%= link_to "#{doc.identifier}", doc.url, class: 'content_url_mine' %>
+          <% else %>
+            <%= link_to "#{doc.identifier}", doc.url, class: 'content_url_mine' %>
+          <% end %>
           <br>
         <% end %>
       <% end %>

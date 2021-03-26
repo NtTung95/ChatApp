@@ -12,13 +12,11 @@
   </div>
   <% if @room.present? %>
     <div class="col-10">
-      <!--      <p><%#= @room.name %></p>-->
-      <div class="chat-room" id="chat-room">
+      <div class="chat-room border-bottom" id="chat-room">
         <% @room.messages.each do |message| %>
           <%= render 'messages/message', message: message %>
         <% end %>
       </div>
-      <hr>
       <div class="chat-box">
         <%= render 'messages/form', message: Message.new, room: @room, user: current_user %>
       </div>

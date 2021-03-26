@@ -10,14 +10,20 @@
       </ul>
     </div>
   <% end %>
+  <div class="image-upload">
+    <label for="message_docs">
+      <i class="bi bi-link-45deg"></i>
+      <%= form.file_field :docs, multiple: true, class: 'm-1' %>
+    </label>
+  </div>
+  <div id="preview" class="m-1"></div>
   <div class="row">
-    <div class="form-group col-10">
+    <div class="form-group col-11">
       <%= form.text_field :content, class: 'input_message form-control' %>
     </div>
-    <%= form.file_field :docs, multiple: true %>
     <%= form.hidden_field :user_id, value: user.id %>
     <%= form.hidden_field :room_id, value: room.id %>
-    <div class="col-2">
+    <div class="col-1">
       <%= form.submit "Send", class: 'btn btn-outline-success' %>
     </div>
   </div>
