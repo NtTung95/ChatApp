@@ -16,7 +16,6 @@
       <div class="chat-room" id="chat-room">
         <% @room.messages.each do |message| %>
           <%= render 'messages/message', message: message %>
-          <br>
         <% end %>
       </div>
       <hr>

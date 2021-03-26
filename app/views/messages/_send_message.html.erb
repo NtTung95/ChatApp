@@ -5,6 +5,8 @@
       <%= message.content %>
       <% if message.docs.present? %>
         <% message.docs.each do |doc| %>
+          <%= image_tag "#{doc.url}", class: 'image_display' if doc.content_type == "image/jpeg"%>
+          <br>
           <%= link_to "#{doc.identifier}", doc.url, class: 'content' %>
           <br>
         <% end %>

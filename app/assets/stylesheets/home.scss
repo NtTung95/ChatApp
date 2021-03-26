@@ -11,6 +11,7 @@
 
   .message {
     min-height: 55px;
+
     .content_container {
       display: inline-block;
 
@@ -23,17 +24,28 @@
 
       }
     }
+  }
 
-    &.me {
-      .content_container {
-        float: right;
-        .content {
-          background-color: #007bff;
+  .me {
+    display: inline-block;
+
+    .content_container {
+      float: right;
+
+      .content {
+        background-color: #007bff;
+        color: white;
+        max-width: 800px;
+        overflow-wrap: break-word;
+
+        .content_url_mine {
           color: white;
-          max-width: 800px;
-          overflow-wrap: break-word;
         }
       }
     }
   }
+}
+
+.image_display {
+  max-width: 200px;
 }

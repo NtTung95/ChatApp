@@ -1,11 +1,14 @@
-<div class="message <%= "me" if message.user_id == current_user.id %>">
+<div class="message col-12 <%= "me" if message.user_id == current_user.id %>">
   <div class="content_container m-1">
     <small class="text-muted"><%= message.user_id == current_user.id ? '' : message.user.email %></small>
     <div class="content">
       <%= message.content %>
       <% if message.docs.present? %>
         <% message.docs.each do |doc| %>
-          <%= link_to "#{doc.identifier}", doc.url, class: 'content' %>
+          <%= image_tag "#{doc.url}", class: 'image_display' if doc.content_type == "image/jpeg"%>
+          <br>
+          <%= link_to "#{doc.identifier}", doc.url, class: 'content_url_mine' %>
+          <%#= send_file '/path/to.jpeg', type: 'image/jpeg',  %>
           <br>
         <% end %>
       <% end %>
