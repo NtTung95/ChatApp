@@ -1,14 +1,12 @@
 <div class="message me">
   <div class="content_container">
-<!--    <small class="text-muted"><%#= message.user.email %></small>-->
+    <!--    <small class="text-muted"><%#= message.user.email %></small>-->
     <div class="content">
       <p class="m-0"><%= message.content %></p>
       <% if message.docs.present? %>
         <% message.docs.each do |doc| %>
           <% if doc.content_type == "image/jpeg" %>
-            <%= link_to doc.url, disposition: "inline" do %>
-              <%= image_tag "#{doc.url}", class: 'image_display' %>
-            <% end %>
+            <%= link_to image_tag("#{doc.url}", class: 'image_display'), doc.url, target: :_blank %>
             <br>
             <%= link_to "#{doc.identifier}", doc.url, class: 'content_url_mine', download: true %>
           <% else %>
