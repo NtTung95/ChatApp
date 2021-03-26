@@ -14,7 +14,7 @@
     <div class="col-10">
       <div class="chat-room border-bottom" id="chat-room">
         <% @room.messages.each do |message| %>
-          <%= render 'messages/message', message: message %>
+          <%= render partial: 'messages/message', locals: {message: message} %>
         <% end %>
       </div>
       <div class="chat-box">

@@ -10,8 +10,8 @@
   }
 
   .message {
-    min-height: 55px;
-
+    margin: 5px 0;
+    float: left;
     .content_container {
       display: inline-block;
 
@@ -44,6 +44,9 @@
         }
       }
     }
+    .text-muted {
+      float: right;
+    }
   }
 }
 
@@ -68,3 +71,11 @@
     display: none;
   }
 }
+
+//.hide {
+//  display: none;
+//}
+//
+//.content:hover + .hide {
+//  display: block;
+//}
